@@ -1,7 +1,20 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-const AllNews = ({ sections }) => {
+interface sectionProps{
+  title: string;
+  articles: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    imageAlt: string;
+    lastPublished: string;
+    id: string;
+  }[];
+}
+
+const AllNews = ({ sections }: { sections: sectionProps[] }) => {
   const filteredNews = sections.filter(
     (news) =>
       news.title !== "বিবিসি বাংলা এখন হোয়াটসঅ্যাপে!" &&
@@ -12,7 +25,7 @@ const AllNews = ({ sections }) => {
   );
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 mt-8">
       {filteredNews.map((section, sectionIndex) => (
         <section key={sectionIndex}>
           
@@ -37,6 +50,8 @@ const AllNews = ({ sections }) => {
               });
 
               return (
+                <Link href={`Details/${article.id}`} key={`${sectionIndex}-${articleIndex}`}>
+                
                 <div
                   key={`${sectionIndex}-${articleIndex}`}
                   className="card bg-base-100 shadow-sm"
@@ -71,6 +86,7 @@ const AllNews = ({ sections }) => {
                     </div>
                   </div>
                 </div>
+                </Link>
               );
             })}
           </div>

@@ -1,5 +1,6 @@
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface MainNewsProps {
     imageUrl: string,
@@ -7,6 +8,7 @@ interface MainNewsProps {
     title: string,
     description: string,
     lastPublished: string,
+    id: string
 }
 
 const MainNews = ({ mainNews , latestNews }: { mainNews: MainNewsProps, latestNews: MainNewsProps[] }) => {
@@ -16,6 +18,9 @@ const MainNews = ({ mainNews , latestNews }: { mainNews: MainNewsProps, latestNe
   timeStyle: "short",
 });
   return (
+
+    <Link href={`Details/${mainNews.id}`}>
+    
     <div>
       <div className="flex gap-3">
         {/* Card */}
@@ -49,6 +54,7 @@ const MainNews = ({ mainNews , latestNews }: { mainNews: MainNewsProps, latestNe
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

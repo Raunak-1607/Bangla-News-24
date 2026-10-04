@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MarqueeText from "react-marquee-text"
 import "react-marquee-text/dist/styles.css"
 
@@ -11,7 +12,8 @@ const Marquee = async() => {
     const topNews = data.data;
     // console.log(topNews);
     return (
-        <div className=" bg-red-500 mt-2">
+        <Link href={`/Details/${topNews.id}`}>
+        <div className=" bg-red-500 mt-2 sticky top-0 z-50">
         <div className="container mx-auto flex  "> 
           <h1 className="py-2 px-3 bg-red-800 text-white rounded-3xl">সর্বশেষ</h1>
           <MarqueeText direction="right" duration={12} className=" bg-red-500 text-white py-2">
@@ -25,6 +27,7 @@ const Marquee = async() => {
         </div>
 
         </div>
+        </Link>
     );
 };
 

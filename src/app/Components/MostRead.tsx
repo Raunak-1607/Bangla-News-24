@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface MostReadProps {
     title: string;
 }
@@ -7,6 +9,8 @@ const MostRead = async () => {
   const data  = await res.json();
   const mostRead = data.data;
   return (
+    <Link href={`/Details/${mostRead.id}`}>
+    
     <div>
       <h1 className="font-bold mb-4">{mostRead[0]?.category}</h1>
 
@@ -18,6 +22,7 @@ const MostRead = async () => {
         ))}
       </ul>
     </div>
+    </Link>
   );
 };
 

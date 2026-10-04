@@ -1,7 +1,9 @@
+import Link from 'next/link';
 import React from 'react';
 interface NavLinksProps {
     title: string;
     scrapable: boolean;
+    slug: string;
 }
 const NavLinks = async() => {
     const res = await fetch("https://news-api-v2.vercel.app/api/categories");
@@ -12,13 +14,17 @@ const NavLinks = async() => {
     
     return (
         <div className='flex gap-4 justify-center py-2 text-[14px] mt-3'>
-            <h1>হোম</h1>
+            <h1><Link href="/">হোম</Link></h1>
             { 
                 
                 filteredCatgories.map((c: NavLinksProps, i:number)=> <div key={i}>
                     <ul>
 
-                    <li>{c.title}</li>
+                    <li>
+                        <Link  href={`/Category/${c.slug}`}>
+                        {c.title}
+                        </Link>
+                        </li>
                     </ul>
                     
                     </div>)
