@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import logo from "../assets/logo.webp";
 import NavLinks from "./NavLinks";
+import Link from "next/link";
 
 const Navbar = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -21,8 +22,10 @@ const Navbar = () => {
         
 
         <div className="navbar-end flex gap-2">
-          <a className="btn">সাইন ইন</a>
-          <a><button className="btn bg-red-700 text-white rounded-1xl">সাইন আপ</button></a>
+          <Link href="../SignIn" className="btn">সাইন ইন</Link>
+          <Link href="../SignUp"><button className="btn bg-red-700 text-white rounded-1xl">সাইন আপ</button></Link>
+          
+          {/* <a><button className="btn bg-red-700 text-white rounded-1xl">সাইন আপ</button></a> */}
         </div>
       </div>
       <div>
